@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>유재석 꽃 테이블</title>
+<style type="text/css">
+	.tb1{
+		width:500px;
+		border:5px groove gray;
+	}
+	
+	.tb2{
+		width:400px;
+		border:5px inset green;  /*inset은 약간 입체느낌!*/
+		border-collapse: collapse; /*행렬사이 틈 없애기*/
+	}
+	
+	/* > : 바로 아래 태그를 의미한다. 원하는 컬럼, 행에 원하는 스타일을 주고 싶을 때?*/
+	.tb1>thead>tr>th{
+		border: 1px solid gray;
+		background-color: orange;
+		color:blue; 
+	}
+	
+	.tb1>thead>tr{
+		height:50px;
+		font-size:1.2em;
+	}
+	
+	.tb1>tbody>tr{
+		height:30px;
+		text-align:center;
+	}
+	
+	.tb1>tbody>tr>td{
+		color:white;
+		background-color: black;
+		border:1px solid yellow; 
+	}
+	
+	/* >는 바로아래태그, 공백: 하위태그*/
+	.tb2 th, .tb2 td{
+		border: 1px solid orange;
+	}
+	
+	.tb2 thead tr {height:50px; color:red;}
+	.tb2 img{width:100px;}
+	.tb2 td:nth-child(1){width:70px;} /*td태그 1번열의 너비조절, tb2의 td를(n번째 행을) 변경*/
+	.tb2 td:nth-chaild(3){width:100px; color:blue; text-align:right;}
+	
+	/*테이블 이벤트를 css에서 줄 수도 있다.*/
+	.tb1 tbody td:hover{
+		background-color:white;
+		color:black; 
+	}
+	
+	.tb2 tbody tr:hover{
+		background-color: yellow;
+	}
+	
+</style>
+</head>
+<body>
+<table class="tb1">
+	<caption> [표 연습 1]</caption>
+	<thead>
+		<th>이름</th><th>나이</th><th>주소</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>유재석</td><td>45세</td><td>강남구</td>
+		</tr>
+		<tr>
+			<td>강호동</td><td>55세</td><td>영등포구</td>
+		</tr>
+		<tr>
+			<td>하하</td><td>45세</td><td>마포구</td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<table class="tb2">
+	<caption>[표 연습 2]</caption>
+	<thead>
+		<tr>
+		<th>꽃 이름</th><th>사진</th><th>가격</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>카네이션</td>
+			<td><img src="../image/f5.png"></td>
+			<td>3,500원</td>
+		</tr>
+		<tr>
+			<td>민들레</td>
+			<td><img src="../image/f6.png"></td>
+			<td>5,000원</td>
+		</tr>
+		<tr>
+			<td>장미꽃</td>
+			<td><img src="../image/f7.png"></td>
+			<td>10,000원</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

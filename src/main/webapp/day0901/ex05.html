@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>마우스이벤트</title>
+</head>
+<body>
+<h2>이미지에서 마우스 이벤트 </h2>
+<p>1. 마우스를 이미지 위에 올리면(onmouseover) 떡볶이로 변경, 내리면(?)(onmouseout) 다시 짬뽕으로 변경<br>
+onmouseover="this.src='../food/떡볶이.jpg'"<br>
+onmouseout="this.src='../food/짬뽕.jpg'"<br>
+주의!! 컴퓨터 내에 있는 사진을 불러온게 아니라 프로젝트 파일에 저장해 놓은 사진폴더에서 불러온 것임!
+</p>
+<br>
+<img src="../food/짬뽕.jpg" width="400"
+onmouseover="this.src='../food/떡볶이.jpg'"
+onmouseout="this.src='../food/짬뽕.jpg'"> <!-- 이벤트 안의 this는 자기자신, 즉 img태그를 의미한다. -->
+
+<br><br>
+<p>
+2. 마우스를 이미지 위에 올리면(onmouseenter) f20이미지로 변경, 내리면(?)(onmouseleave) 다시 f1으로 변경<br>
+onmouseover="this.src='../food/떡볶이.jpg'"<br>
+onmouseout="this.src='../food/짬뽕.jpg'"<br>
+</p>
+<img src="../image/f1.png" width="300"
+onmouseenter="this.src='../image/f20.png'"
+onmouseleave="this.src='../image/f1.png'">
+
+</body>
+</html>

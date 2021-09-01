@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예제 1</title>
+<style type="text/css">
+/*범용class*/
+.style1{
+font-size:15pt; /*글꼴 크기 : 단위 px,pt,em,rem*/ 
+color: magenta;}
+
+/*b 태그에만 적용 가능한 클래스*/
+b.style2{
+	border-color:#66cdaa;/*테두리 선색*/
+	border-radius:30px;/*테두리 모서리 둥글기*/
+	border-width:500; /*테두리 */
+	border-style:solid;/*테두리 선 종류*/
+	width:300px;
+	color: #c71585;
+	font-size:2em;} /*글꼴크기 : 직전 태그의 2배*/
+
+b.style3{
+	line-heigth:100px;
+	text-align:center;} /*가운데 수평*/
+</style>
+</head>
+<body>
+<font color="green" size="5" face="Impact">Have a Nice Day!!</font>
+<font color="red" size="10" face="궁서체"> 안녕하세용</font>
+<br>
+<b class="style1">Bold 속성</b>
+<br> 
+<!-- 폰트에 속성을 주지 않고 클래스를 호출해서 쓸 수 있다. -->
+<font class="style1">font태그에 style1 class적용</font> 
+<br>
+<b class="style2">B-style2 적용!</b>
+<br>
+<font class="style2">font-style2 적용</font>
+<br>
+<b class="style2 style3">style2,style3 둘 다 적용</b>
+
+</body>
+</html>
