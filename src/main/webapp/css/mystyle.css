@@ -1,3 +1,5 @@
+/*css파일에는 링크는 못넣고 임포트만 가능하다.*/
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&family=Single+Day&display=swap');
 div.lotto{
 	margin-left:10px;
 	margin-top:30px;

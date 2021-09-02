@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열과 prompt </title>
+<style type="text/css">
+	#result{
+		width: 300px;
+		font-size: 15pt;
+		text-align: center;
+	}
+	
+	#result img{
+		max-width: 250px;
+	}
+</style>
+</head>
+<body>
+<button type="button" onclick="arrayTest()">이미지 출력</button>
+<hr>
+<div id="result"></div>
+
+<script type="text/javascript">
+	
+	function arrayTest(){
+		var r = document.getElementById("result")
+		
+		var imageArray = new Array();
+		imageArray.push("<img src='../image/f9.png'>");
+		imageArray.push("<img src='../food/삼겹살.jpg'>");
+		imageArray.push("<img src='../bts/18.JPG'>");
+		imageArray.push("<img src='../food/참치회.jpg'>");
+		imageArray.push("<img src='../image/f9.png'>");
+		
+		var msg = prompt("출력할 이미지의 인덱스 번호를 입력해주세요", 0);
+		if(msg<0||4<msg){
+			r.innerHTML="해당 번호의 이미지는 없습니다.";
+		}else{
+			r.innerHTML=imageArray[msg];
+		}
+	}
+	
+	
+	
+</script>
+</body>
+</html>

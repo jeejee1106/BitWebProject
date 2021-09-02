@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>confirm로 꽃, 사람, 음식 이미지 출력하기</title>
+<style type="text/css">
+	button{
+		width: 100px;
+		height: 30px;
+		background-color: skyblue;
+		color: orange;
+		border-radius: 30px;
+		margin-left: 10px;
+	}
+	
+	div img{
+		max-width: 150px; /*150px이 넘는 이미지의 경우 최대 크기를 150으로 조정시킬 것이다!!!*/
+	}
+</style>
+</head>
+<body>
+<button type="button" onclick="flowerImage()">꽃</button>
+<button type="button" onclick="peopleImage()">사람</button>
+<button type="button" onclick="foodImage()">음식</button>
+<hr>
+<div id="result"></div>
+
+<script type="text/javascript">
+	var r = document.getElementById("result")
+	
+	function flowerImage(){
+		var ans = confirm("꽃 사진을 출력할까요?");
+		
+		if(ans){
+			r.innerHTML="<img src='../image/f9.png'>";
+			//r.innerHTML+="<img src='../image/f9.png'>"; //이건 사진을 계속계속 추가해주는 코드! 사진이 계속쌓인다.
+		}
+	}
+	
+	function peopleImage(){
+		var ans = confirm("사람 사진을 출력할까요?");
+		r.innerHTML="<img src='../bts/2.JPG'>";
+		//r.innerHTML+="<img src='../bts/2.JPG'>"; //이건 사진을 계속계속 추가해주는 코드! 사진이 계속쌓인다.
+	}
+	
+	function foodImage(){
+		var ans = confirm("음식 사진을 출력할까요?");
+		r.innerHTML="<img src='../food/닭갈비.jpg'>";
+		//r.innerHTML+="<img src='../food/닭갈비.jpg'>"; //이건 사진을 계속계속 추가해주는 코드! 사진이 계속쌓인다.
+	}
+</script>
+</body>
+</html>

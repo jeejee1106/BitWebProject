@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>alert, prompt, config</title>
+<style type="text/css">
+	div{
+		border: 2px solid gray;
+		width: 400px;
+		height: 50px;
+		font-size: 20pt;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+버튼은 두 가지 형식으로 만들 수 있다. 둘 다 같음. 좋고나쁨 없음 밑에거(button태그)를 더 많이 쓰긴 함<br>
+alert은 메세지 모달창을 띄울 때 쓴다.<br>
+<input type="button" value="alert" onclick="alert('이게 alert입니당')">
+<button type="button" onclick="promptTest()">prompt</button>
+<button type="button" onclick="confirmTest()">confirm</button>
+<hr>
+<div id="memo">
+test
+</div>
+
+<script type="text/javascript">
+//js에서 함수(메서드)는 무조건 function+함수명 으로 쓴다.
+	function promptTest(){
+		var name = prompt("당신의 이름을 입력해주세요", "김태희"); //여기서 김태희는 초기값!
+		var msg = "내 이름은 " + name + "입니다";
+		document.getElementById("memo").innerHTML = "<b>" + msg + "</b>"; //innerHTML은 HTML코드도 넣을 수 있다는 뜻.
+		//document.getElementById("memo").innerText = "<b>"+ msg + "</b>"; //innerText은 HTML코드도 텍스트로 출력한다.
+		} //주석 풀어가면서 비교해보기~~
+		
+	function confirmTest(){
+		var ans = confirm("DB에 데이터를 추가할까요?");
+		console.log(ans); //js는 콘솔이 따로 없어서 크롬에 있는 콘솔을 확인해야 한다. 확인 누르면 true, 취소 누르면 false가 출력되는 것을 알 수 있다.
+
+		var m = document.getElementById("memo");
+			if(ans){
+				m.innerHTML="DB에 데이터를 추가했습니다."
+			}else{
+				m.innerHTML="DB작업을 취소했습니다.";
+			}
+		}		
+</script>
+
+
+</body>
+</html>
