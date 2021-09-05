@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>랜덤으로 이미지 바꾸기</title>
+<style type="text/css">
+	#photo{
+	position: absolute;
+	left: 500px;
+	top: 150px;
+	width: 400px;
+	height: 500px;
+	border: 20px groove gold;
+	}
+	
+	#btnrandom{
+	margin-left: 400px;
+	width: 100px;
+	height: 100px;
+	}
+</style>
+
+<script type="text/javascript">
+	window.onload = function(){
+		var imgarr=new Array();
+		imgarr.push("../bts/1.JPG");
+		imgarr.push("../bts/2.JPG");
+		imgarr.push("../bts/3.JPG");
+		imgarr.push("../bts/4.JPG");
+		imgarr.push("../bts/5.JPG");
+		imgarr.push("../bts/6.JPG");
+		imgarr.push("../bts/7.JPG");
+		imgarr.push("../bts/8.JPG");
+		imgarr.push("../bts/9.JPG");
+		imgarr.push("../bts/10.JPG");
+		
+		//이미지의 요소값을 얻어서 랜덤하게 초기 이미지 넣기!
+		var photo = document.getElementById("photo");
+		var idx = parseInt(Math.random()*10); //랜덤숫자!
+		photo.setAttribute("src", imgarr[idx]);	
+		
+		//이미지버튼 이벤트
+		document.getElementById("btnrandom").onclick=function(){
+			var idx = parseInt(Math.random()*10); //랜덤숫자!
+			photo.setAttribute("src", imgarr[idx]);	
+		}
+			
+			
+	}
+</script>
+</head>
+<body>
+<input type="image" src="../image/f7.png" id="btnrandom">
+<marquee width="500" direction="left" behavior="slide">
+<b>왼쪽 버튼을 누르면 이미지가 바뀝니다 ^^</b></marquee>
+<img src="" id="photo">
+</body>
+</html>

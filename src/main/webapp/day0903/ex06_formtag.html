@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼태그</title>
+
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&family=Single+Day&display=swap');
+	table{
+		border-collapse: collapse; /*테이블 테두리 사이의 간격*/
+		width: 500px;
+		border: 3px dotted green;
+	}
+	
+	th, td{
+		border: 1px solid gray;
+	}
+	
+	#result{
+		font-family: Nanum Pen Script;
+		width: 500px;
+		height: 300px;
+		font-size: 1.3em;
+		border: 2px inset gray; /* inset이 라인!! */
+		margin-top: 20px;
+		padding: 5px 10px;
+	}
+</style>
+
+</head>
+<body>
+<form name="frm">
+<table>
+	<caption>formTag들 연습</caption>
+	<tr>
+		<th bgcolor="orange" width="100">이름</th>
+			<td>
+				<input type="text" id="name" placeholder="이름" required="required"
+					value="이효리">
+				<!--placeholder: 텍스트 입력 안하면 보여지는 초기값? required:필수입력값(여기선 의미 없음)-->
+			</td>
+	</tr>
+	<tr>
+		<th bgcolor="orange" width="100">비밀번호</th>
+			<td>
+				<input type="password" id="pass" size="10" placeholder="비밀번호" required="required"
+					value="12345">
+				<!--placeholder: 텍스트 입력 안하면 보여지는 초기값? required:필수입력값(여기선 의미 없음)-->
+			</td>
+	</tr>
+	<tr>
+		<th bgcolor="orange" width="100">혈액형</th>
+			<td>
+				<input type="radio" value="A" name="blood">A형
+				<input type="radio" value="B" name="blood" checked="checked">B형 <!-- checked만 써도됨 -->
+				<input type="radio" value="AB" name="blood">AB형
+				<input type="radio" value="O" name="blood">O형
+			</td>
+	</tr>
+	<tr>
+		<th bgcolor="orange" width="100">생년월일</th>
+			<td>
+				<input type="date" value="2000-12-12" id="birth">
+			</td>
+	</tr>
+	<tr>
+		<th bgcolor="orange" width="100">취미</th>
+			<td>
+				<input type="checkbox" name="hobby" value="낚시">낚시
+				<input type="checkbox" name="hobby" value="게임">게임
+				<input type="checkbox" name="hobby" value="여행">여행
+				<input type="checkbox" name="hobby" value="영화감상">영화감상
+			</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+			<button type="button" id="btnresult">결과 출력</button>
+		</td>
+	</tr>
+</table>
+</form>
+<div id="result">여기가 div태그에 result로 id준 곳</div>
+
+<script type="text/javascript">
+	document.getElementById("btnresult").onclick=function(){ //위에서 만들어 준 결과출력이라는 버튼을 누르면 이 밑의 코드들이 실행될거야!
+		var out=document.getElementById("result");
+		var s = "";
+		s="이름 : " + document.getElementById("name").value+"<br>";
+		s+="비밀번호 : " + document.getElementById("pass").value+"<br>";
+		s+="혈액형 : " + frm.blood.value+"형<br>"; //form의 name을 통해 접근!
+		s+="생년월일 : " + document.getElementById("birth").value+"<br>";
+		
+		//s+="취미 : " + frm.hobboy.value+"형<br>"; //안됨!!!!!!
+		console.log(frm.hobby.length) //hobby의 갯수
+		//배열로 들어오기 때문에 for문으로 작성해야 한다.
+		var h = "";
+		for(var i=0; i<frm.hobby.length; i++){
+			//체크박스는 선택된 경우에만 value값을 얻어야 한다.
+			if(frm.hobby[i].checked){ //체크된 경우가 true
+				h+="[" + frm.hobby[i].value+"]";
+			}
+		}
+		s+="취미 : " + (h.length==0?"취미없음":h) + "<br>"
+		out.innerHTML=s;
+	}
+</script>
+</body>
+</html>

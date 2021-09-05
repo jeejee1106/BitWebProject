@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>버튼으로 폰트사이즈 크게/작게</title>
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&family=Single+Day&display=swap');
+	
+	#out{
+		font-family: 'Nanum Pen Script'; /* 폰트 쓰는 법 다시 공부 */
+		font-weight: bold;
+		padding: 20px 20px; /*왼쪽,위*/
+	}
+</style>
+
+<script type="text/javascript">
+	//조건1 : 버튼 이벤트를 정의하는데, 클릭시 마다 3px씩 감소/증가 되도록 한다.
+	//조건2 : 8보다 작아지면 경고 메세지 "더 이상 줄일 수 없습니다" 후에 종료
+	//조건3 : 60보다 커지면 경고 메세지 "더 이상 커질 수 없습니다" 후에 종료
+	//조건4 : 버튼 클릭 시 마다 현재 글꼴 사이즈를 fsize에 출력하기
+	window.onload = function(){
+		//alert("stert");
+
+		var fsize = document.getElementById("fsize");
+		var out = document.getElementById("out");
+		fsize.innerHTML = "현재 글꼴 크기는 40px입니다";
+
+		document.getElementById("btn1").onclick = function(){
+			var fs = parseInt(out.style.fontSize, 10); //폰트사이즈를 10진수의 int타입으로 바꾸겠다
+			//alert(fs);
+			fs-=3;
+			console.log(fs);
+			if (fs < 8) {
+				alert("더이상 줄일 수 없습니다");
+				fs += 3; //이거 왜넣는거야?
+				console.log(fs + ":aaa");
+				return;
+			}
+
+			out.style.fontSize = fs +"px";
+			fsize.innerHTML = "현재 글꼴 크기는 " + fs + "px입니다";
+		}
+		
+
+	}
+	
+</script>
+
+</head>
+<body>
+<button type="button" id="btn1">점점작게</button>
+<button type="button" id="btn2">점점크게</button>
+<hr>
+<div id="fsize"></div>
+<div id="out" style="font-size: 40px;">오늘은 즐거운 금요일 입니다.</div>
+</body>
+</html>

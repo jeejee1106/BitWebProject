@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0903 시험문제 답</title>
+<style type="text/css">
+	#one{
+		margin-left: 30px;
+		margin-bottom: 20px;
+	}
+</style>
+
+<script type="text/javascript">
+	
+	function photoSmall(){
+		var p = document.getElementById("myimg");
+		var w = p.getAttribute("width");
+		w = parseInt(w);
+		console.log(typeof(w));
+		w-=10; //String타입이어도 빼기나 곱하기는 숫자로 계산이 된다. 근데 덧셈만 스트링으로 계산된다.ㅜㅜ 그래서 그냥 통일성(?)을 위해 다 형변환을 해주자
+		console.log(w); //브라우저의 콘솔 창에 w의 타입이 출력된다.
+		p.setAttribute("width", w);
+	}
+	
+	function photoLarge(){
+		var p = document.getElementById("myimg");
+		var w = p.getAttribute("width");
+		w = parseInt(w);
+		console.log(typeof(w));
+		w+=10;
+		console.log(w);
+		p.setAttribute("width", w);
+	}
+</script>
+</head>
+<body>
+<h1>1번 문제풀이</h1>
+<div id = "one">
+	<button type="button" onclick="photoSmall()">점점작게</button>
+	<button type="button" onclick="photoLarge()">점점크게</button>
+</div>
+<img src="../bts/26.JPG" width="200" id="myimg">
+<hr>
+<h1>2번 문제 풀이</h1>
+<script type="text/javascript">
+	var imagearr=["../image/f1.png",
+				"../bts/14.JPG",
+				"../image/f10.png",
+				"../food/만두.jpg",
+				"../food/닭갈비.jpg"];
+	var s = "";
+	for(var i=0; i<imagearr.length; i++){
+		s+="<img src='"+imagearr[i]+"'width='200'>";
+	}
+		document.write(s);
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

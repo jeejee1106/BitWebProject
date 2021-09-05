@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+	#ballbox{
+		width: 700px;
+		height: 180px;
+		border: 2px inset gray; /* inset이 라인!! */
+		border-radius:30px;
+		margin-top: 20px;
+		padding: 5px 10px;
+	}
+	
+	#resultbox{
+		width: 250px;
+		height: 100px;
+		border: 2px solid gray; /* inset이 라인!! */
+		background-color: orange;
+		border-radius:30px;
+		margin-left: 185px;
+		margin-top: 20px;
+		padding: 20px 20px;
+	}
+	
+	.ball{
+		float: left;
+		margin-left:10px;
+		margin-top:35px;
+		border-radius:100px;
+		background-color:blue;
+		width:100px;
+		height:100px;
+		line-height:100px;
+		font-size: 3em;
+		text-align: center;
+		font-weight: bold;
+		color:white;
+		box-shadow: 5px 5px 5px gray; /*x,y,blur*/
+	}
+
+</style>
+
+<script type="text/javascript">
+
+window.onload = function(){
+		
+	//버튼을 누를 때 실행되지 않아도 되고, 두 함수에서 쓸 것이기 때문에 밖에다가 선언해준다!!
+	var lotto=[12,34,8,23,45,5];	
+	var mylotto=new Array(6);
+		
+	document.getElementById("btnrandom").onclick=function(){ //위에서 만들어 준 결과출력이라는 버튼을 누르면 이 밑의 코드들이 실행될거야!
+		
+		var b = document.getElementsByClassName("ball"); //같은 클래스의 값은 배열에 들어간다. 즉 길이가 6인 배열이 생성되었고, 그것을 b에 넣어준다.
+		//console.log(b); //[div.ball, div.ball, div.ball, div.ball, div.ball, div.ball]
+		for(var i=0; i<mylotto.length; i++){
+			mylotto[i] = parseInt(Math.random()*45)+1;
+			//console.log(mylotto[i]) //랜덤 숫자 6개 잘 나오는지 확인해보기 위함!
+			for(var j=0; j<i; j++){
+				if(mylotto[i]==mylotto[j]){
+	               i--;
+	               break;
+				}
+			}
+			b[i].innerHTML=mylotto[i];
+		}
+		
+	}
+	
+	document.getElementById("btntesult").onclick=function(){
+		
+		var cnt = 0;
+		for(var i=0; i<lotto.length; i++){
+			for(var j=0; j<lotto.length; j++){
+				if(lotto[i]==mylotto[j]){
+					cnt++;
+					//console.log(cnt);
+				}
+			}
+			
+		}
+		
+		count.innerHTML="[맞은 갯수 : " + cnt + "개!]";
+		
+		if(cnt==6){
+			result.innerHTML = "1등입니다!!!";
+		} else if(cnt==5){
+			result.innerHTML = "2등입니다!!!";
+		} else if(cnt==4){
+			result.innerHTML = "3등입니다!!!";
+		} else{
+			result.innerHTML = "꽝꽝이ㅠㅠ";
+		}
+	}
+}
+</script>
+</head>
+<body>
+<!-- [문제]
+미리 배열에 로또 숫자를 넣어놓는다
+var lotto=[12,34,8,23,45,5];//정답 로또 숫자
+var  mylotto=new Array(6); //랜덤하게 6개를 구해서 출력한다.
+버튼 두개 생성 1.[다른숫자발생]  2.[선택]
+다른숫자발생버튼을 클릭할때마다 중복되지 않는 6개의 난수(1~45) 를 발생하여 출력한다.
+적용버튼을 누르면  이번주의 로또 숫자와 함께 내가 맞춘 숫자를 출력하고
+6개가 맞으면 “1등”, 5개가 맞으면 “2등, 4개가 맞으면 “3등”, 나머진 “꽝” 이라고 출력 -->
+<h2 style="margin-left:250px">오늘의 로또 번호!</h2>
+<div id="ballbox">
+<div class="ball">0</div>
+<div class="ball">0</div>
+<div class="ball">0</div>
+<div class="ball">0</div>
+<div class="ball">0</div>
+<div class="ball">0</div>
+</div>
+<br><br>
+<button type="button" id="btnrandom" style="margin-left: 250px">다른숫자발생</button>
+<button type="button" id="btntesult">결과보기</button>
+<br><br>
+<div id="resultbox">
+<div style="margin-left: 30px">내 숫자 : [12,34,8,23,45,5]</div><br>
+<div id="count" style="margin-left: 30px"></div>
+<div id="result" style="margin-left: 30px"></div>
+</div>
+</body>
+</html>
