@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로또 번호 구하기</title>
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+<script type="text/javascript">
+var lotto=[12,34,8,23,45,5];	
+var mylotto=new Array(6);
+
+	window.onload=function(){
+		writeLotto(); //브라우져 실행하자마자 랜덤번호 나오게! window에 호출!
+	
+		document.getElementById("btnrefresh").onclick=function(){
+			writeLotto();
+		}
+		
+		document.getElementById("btnselect").onclick=function(){
+			var score=0;
+			
+			for(var i=0; i<mylotto.length; i++){
+				for(var j=0; j<mylotto.length; j++){
+					if(mylotto[i]==lotto[j]){
+						score++;
+					}
+				}
+			}
+			
+			var s="<b>이번주 로또 정답</b><br>";
+			for(var i=0; i<lotto.length; i++){
+				s+="[" + lotto[i] + "]&nbsp;&nbsp;";  //%nbsp; 공백 한 칸을 의미한다!!
+			}
+			s+="<br><br>맞은갯수:" + score + "개"
+			s+="<h3 style='color:red'>"
+			if(score==6){
+				s+="1등!!!!";
+			} else if(score==5){
+				s+="2등!!!!";
+			} else if(score==4){
+				s+="3등!!!!";
+			} else {
+				s+="꽝꽝이!";
+			}
+			s+="</h3>";
+			document.getElementById("view").innerHTML=s;
+		}
+		
+	}
+	
+	function writeLotto(){
+		//1~45개의 중복되지 않는 숫자를 mylotto에 구한다
+		for(var i=0; i<mylotto.length; i++){
+			mylotto[i]=parseInt(Math.random()*45)+1;
+			//중복체크
+			for(var j=0; j<i; j++){
+				if(mylotto[i]==mylotto[j]){
+					i--;
+					break;
+				}
+			}
+		}
+		
+		//lotto div에 랜덤번호 출력
+		var lottodiv=document.getElementsByClassName("lotto");
+		for(var i=0; i<lottodiv.length; i++){
+			lottodiv[i].innerHTML=mylotto[i];
+		}
+		
+		
+	}
+	
+</script>
+</head>
+<body>
+<div class="lotto"></div>
+<div class="lotto"></div>
+<div class="lotto"></div>
+<div class="lotto"></div>
+<div class="lotto"></div>
+<div class="lotto"></div>
+<hr class="hr" align="left" size="5" color="gray">
+<button type="button" class="btna" id="btnrefresh" style="margin-left: 200px">다른숫자 발생</button>
+<button type="button" class="btna" id="btnselect">선택</button>
+<br><br>
+<div id="view"></div>
+</body>
+</html>

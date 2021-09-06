@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>keyCode</title>
+	<style type="text/css">
+		#myimg{
+			position:absolute;
+		}
+	</style>
+
+	<script type="text/javascript">
+		
+		var myimg;
+		var xpos=500;
+		var ypos=300;
+		
+		window.onload=function(){
+			myimg = document.getElementById("myimg");
+			myimg.style.top=ypos+"px";
+			myimg.style.left=xpos+"px";
+			
+			window.onkeydown=function(e){
+				//console.log(e.keyCode)
+				//좌상우하 순서(키보드 시계방향)로 37,38,39,40, 엔터는 13
+				switch(e.keyCode){
+					case 37: 
+						xpos-=10;
+						myimg.style.left=xpos+"px";
+						break;
+					case 38:
+						ypos-=10;
+						myimg.style.top=ypos+"px";
+						break;
+					case 39:
+						xpos+=10;
+						myimg.style.left=xpos+"px";
+						break;
+					case 40:
+						ypos+=10;
+						myimg.style.top=ypos+"px";
+						break;
+					case 13:
+						xpos=500;
+						ypos=300;
+						myimg.style.top=ypos+"px";
+						myimg.style.left=xpos+"px";
+						break;
+				}
+			}
+		}
+		
+	</script>
+
+</head>
+<body>
+<!-- 문제
+초기값 xpos=500, ypos=300 의 위치에 처음 이미지를 나오도록 한 후
+방향키를 누를때마다 이동(10 씩 이동), 엔터를 누르면 처음 위치(500,300) 의 위치로 이동 -->
+<img src="../image2/05.png" id="myimg">
+</body>
+</html>
