@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계산기!!!!</title>
+<link rel="stylesheet" type="text/css" href="ex01_style.css">
+<script type="text/javascript" src="ex01_script.js"></script>
+</head>
+<body>
+	<button type="button" id="btnshow">계산기 보이기</button>
+	<button type="button" id="btnhide">계산기 숨기기</button>
+	<div class="calc" id="calc">
+		<table>
+			<caption>계산기</caption>
+			<tr class="one">
+				<td colspan="4" id="result" align="right">
+					<div id="show">0</div>
+				</td>
+			</tr>
+			<!-- 첫 번째 줄 -->
+			<tr class="two">
+				<td>
+					<button type="button" onclick="goSign()">+/-</button>
+				</td>                              
+				<td>                               
+					<button type="button" onclick="goCE()">CE</button>
+				</td>                              
+				<td>                               
+					<button type="button" onclick="goC()">C</button>
+				</td>                              
+				<td>                               
+					<button type="button" onclick="goBack()">←</button>
+				</td>
+			</tr>
+			
+			<!-- 두 번째 줄 -->
+			<tr class="two">
+				<td>
+					<button type="button" onclick="goNum(7)">7</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum(8)">8</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum(9)">9</button>
+				</td>
+				<td>
+					<button type="button" onclick="goOper('+')">+</button>
+				</td>
+			</tr>
+			
+			<!-- 세 번째 줄 -->
+			<tr class="two">
+				<td>
+					<button type="button" onclick="goNum(4)">4</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum(5)">5</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum(6)">6</button>
+				</td>
+				<td>
+					<button type="button" onclick="goOper('-')">-</button>
+				</td>
+			</tr>
+			
+			<!-- 네 번째 줄 -->
+			<tr class="two">
+				<td>
+					<button type="button" onclick="goNum(1)">1</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum(2)">2</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum(3)">3</button>
+				</td>
+				<td>
+					<button type="button" onclick="goOper('*')">*</button>
+				</td>
+			</tr>
+			
+			<!-- 다섯 번째 줄 -->
+			<tr class="two">
+				<td>
+					<button type="button" onclick="goNum(0)">0</button>
+				</td>
+				<td>
+					<button type="button" onclick="goNum('00')">00</button>
+				</td>
+				<td>
+					<button type="button" onclick="goDot()">.</button>
+				</td>
+				<td>
+					<button type="button" onclick="goResult()">=</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<img src="../image2/03.png">
+</body>
+</html>

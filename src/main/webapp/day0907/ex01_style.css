@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Pen+Script&family=Single+Day&display=swap');
+
+#btnshow{
+	margin-left: 200px;
+}
+
+#btnshow, #btnhide{
+	width: 150px;
+	height: 40px;
+	font-size: 15pt;
+	font-family: 'Fjalla One';
+}
+
+div.calc{
+	width: 442px;
+	height: 650px;
+	margin-left: 130px;
+	margin-top: 20px;
+	border: 2px solid gray;
+}
+
+.calc table{
+	width: 450px;
+	border-collapse: collapse;
+}
+
+.calc tr button{
+	width: 100px;
+	height: 100px;
+	font-family: 'Black Han Sans';
+	font-size: 20pt;
+}
+
+.calc tr.one{
+	height: 100px;
+}
+
+#show{
+	width: 440px;
+	height: 80px;
+	font-family: 'Black Han Sans';
+	font-size: 36pt;
+	border: 2px solid black;
+	margin-right: 10px;
+}
+
+.calc caption{
+	font-size: 30px;
+	font-weight: bold;
+	font-family: 'Nanum Pen Scrip';
+}
+
+
+
+
+
+
+

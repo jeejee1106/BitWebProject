@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table{
+		width: 400px;
+		border-collapse: collapse; /*테이블 테두리 사이의 간격*/
+		border: 3px solid skyblue;
+		margin-top: 15px;
+	}
+	
+	th, td{
+		border: 1px dotted skyblue;
+	}
+	
+	#wrap{
+		width: 400px;
+		height: 350px;
+		border: 2px inset gray; /* inset이 라인!! */
+		margin-top: 20px;
+		padding: 5px 10px;
+		text-align:center;
+	}
+</style>
+</head>
+<body>
+<div id="wrap">
+	<form name="frm">
+		<table id="tb">
+			<caption>선택 후 클릭하세요</caption>
+			<tr>
+				<td>
+				당신의 나이는?<br>
+				<input type="radio" value="10대" name="age">10대
+				<input type="radio" value="20대" name="age" checked="checked">20대 <!-- checked만 써도됨 -->
+				<input type="radio" value="30대" name="age">30대
+				<input type="radio" value="40대" name="age">40대
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+				당신의 직업은?<br>
+				<input type="radio" value="학생" name="job" checked="checked">학생
+				<input type="radio" value="운동선수" name="job">운동선수
+				<input type="radio" value="의사" name="job">의사
+				<input type="radio" value="백수" name="job">백수
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+				좋아하는 연예인은?<br>
+				<input type="checkbox" name="bts" value="유재석">유재석
+				<input type="checkbox" name="bts" value="조승우">조승우
+				<input type="checkbox" name="bts" value="이병헌">이병헌
+				<input type="checkbox" name="bts" value="강동원">강동원
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<button type="button" id="btnresult">출력빼앰</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div id="result"></div>
+</div>
+<script type="text/javascript">
+	
+	document.getElementById("btnresult").onclick=function(){
+		
+		var out=document.getElementById("result");
+		var s = "";
+		s="**결과**<br>";
+		s+="당신의 나이는<span style='color:purple;'> " + frm.age.value+"</span> 이군요!!<br>";
+		s+="당신의 직업은<span style='color:blue;'> " + frm.job.value+"</span> 이군요!!<br>";
+		
+		
+		//s+="취미 : " + frm.hobboy.value+"형<br>"; //안됨!!!!!!
+		console.log(frm.bts.length) //hobby의 갯수
+		//배열로 들어오기 때문에 for문으로 작성해야 한다.
+		var h = "";
+		for(var i=0; i<frm.bts.length; i++){
+			//체크박스는 선택된 경우에만 value값을 얻어야 한다.
+			if(frm.bts[i].checked){ //체크된 경우가 true
+				h+="<span style='color:orange;'>[" + frm.bts[i].value + "]</span>";
+			}
+		}
+		s+=(h.length==0?"좋아하는 연예인이 없으시군요":h +"을 좋아하시는군용") + "<br>"
+		out.innerHTML=s;
+		
+	}
+	
+	
+	
+</script>
+</body>
+</html>
