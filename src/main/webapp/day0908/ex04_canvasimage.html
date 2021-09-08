@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>canvas에 image넣기</title>
+<style type="text/css">
+	ul li{
+		list-style: none; /* 리스트를 만들면 앞에 찍히는 특수문자 제거 */
+		float: left;
+	}
+	
+	ul li img{
+		width: 70px;
+		margin-right: 10px;
+		border: 1px solid gray;
+	}
+	
+	#my{
+		border: 10px groove gold;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	window.onload=function(){
+		can = document.getElementById("my"); //var를 붙히지 않으면 자동으로 전역변수가 된다!!!!!!
+		ctx = can.getContext("2d");
+	}
+	
+	function changeImage(imgsrc){
+		console.log(imgsrc);
+		image = new Image();
+		image.src = imgsrc;
+		image.onload = function(){
+			ctx.drawImage(image, 0, 0, 440, 500);
+		}
+	}
+</script>
+</head>
+<body>
+	<canvas id="my" width="400" height="500"></canvas>
+	<ul>
+		<li><img src="../bts/10.JPG" onclick="changeImage(this.src)"></li>
+		<li><img src="../bts/2.JPG" onclick="changeImage(this.src)"></li>
+		<li><img src="../bts/8.JPG" onclick="changeImage(this.src)"></li>
+		<li><img src="../bts/6.JPG" onclick="changeImage(this.src)"></li>
+	</ul>
+	
+	
+</body>
+</html>

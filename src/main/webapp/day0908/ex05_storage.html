@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Local Storage</title>
+</head>
+<body>
+	<h1>Local Storage 연습</h1>
+	<button id="btn1">저장</button>
+	<button id="btn2">삭제</button>
+	<button id="btn3">전체삭제</button>
+	<button id="btn4">내용보기</button>
+	
+	<script type="text/javascript">
+		document.getElementById("btn1").onclick=function(){
+			//로컬 스토리지에 저장하는 세가지 방법
+			localStorage.setItem("key1", "안녕"); //#방법1
+			localStorage.key2="Happy"; //#방법2
+			localStorage["key3"] = "Hello"; //#방법3
+		}
+		
+		document.getElementById("btn2").onclick=function(){
+			//key2만 지워보장!
+			localStorage.removeItem("key2");
+		}
+		
+		document.getElementById("btn3").onclick=function(){
+			//모든 로컬 스토리지를 확인해보자!
+			localStorage.clear();
+		}
+
+		document.getElementById("btn4").onclick=function(){
+			//로컬 스토리지를 가져오는 세 가지 방법
+			var s = "localStorage 값 확인" 
+				+ "\nkey1=" + localStorage.key1 
+				+ "\nkey2=" + localStorage["key2"] 
+				+ "\nkey3=" + localStorage.getItem("key3");
+			
+				alert(s);
+				
+				//위에서 저장한 방법과 꼭 짝을 안맞추고 편한 코드를 골라서 쓰면 된다.
+		}
+	</script>
+</body>
+</html>

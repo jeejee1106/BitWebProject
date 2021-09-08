@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Canvas를 이용해 그림 그리기</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<style type="text/css">
+	#can{
+		border: 10px solid gold;
+		cursor: crosshair;
+	}
+	
+	#clr{
+		margin-left: 300px;
+	}
+	
+	#clr div{
+		width: 30px;
+		height: 30px;
+		border: 1px solid black;
+		cursor: pointer;
+		float: left;
+		margin-left: 3px;
+	}
+	
+	#clear, #eraser{
+		text-decoration: none;
+		width: 130px;
+		height: 40px;
+		border: 2px solid green;
+		border-radius: 50px;
+		float: left;
+		line-height: 40px;
+		text-align: center;
+		font-weight: bold;
+		cursor: pointer;
+		margin-left: 20px;
+		box-shadow: 5px 5px 3px gray;
+	}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		var can = document.getElementById("can");
+		var ctx = can.getContext("2d"); //2차원 렌더링 컨텍스트를 나타내는 CanvasRenderingContext2D 객체를 생성
+		var preX, preY; //선 그릴 때 현재좌표 저장 할 변수
+		var draw = false;
+		
+		ctx.strokeStyle = "black";
+		ctx.lineCap="round";
+		
+		//이벤트
+		can.onmousedown=function(e){
+			//console.log("onmousedown");
+			draw = true; //마우스를 클리하고 움직일 경우에만 그림을 그리기 위해 true로 준다
+			
+			//클릭한 곳에서 선이 시작되도록 x,y좌표 지정
+			preX = e.pageX; //현재 마우스 위치
+			preY = e.pageY;		
+		}
+		
+		can.onmousemove=function(e){
+			//console.log("onmousemove");
+			if(draw==true){
+				ctx.beginPath();
+				ctx.lineWidth=2;
+				ctx.moveTo(preX, preY); //직전좌표로 이동
+				ctx.lineTo(e.pageX, e.pageY); //직전좌표부터 현재좌표까지 선 그리기
+				
+				ctx.stroke();
+				ctx.closePath();
+				
+				//현재좌표를 다시 저장
+				preX = e.pageX;
+				preY = e.pageY;
+				
+			}
+		}
+		
+		can.onmouseup=function(e){
+			//console.log("onmouseup");
+			draw = false;
+		}
+		
+		//화면 초기화 버튼 이벤트
+		document.getElementById("clear").onclick=function(){
+			ctx.fillStyle = "#ffffff"; //채우기 색을 흰색으로 변경
+			ctx.fillRect(0, 0, can.width, can.height);
+		}
+		
+		//선색 변경하기 (제이쿼리가 들어감 ㅠㅠ 달러 표시가 제이쿼리)
+		$('#clr>div').click(function(){
+			//현재 div태그의 배경색 속성값을 얻어서 선 색 변경하기
+			ctx.strokeStyle = $(this).css("background-color");
+		});
+		
+		//지우개 이벤트(?)
+		$("#eraser").click(function(){
+			//선 색을 흰색으로 변경해서 지우개 효과를 준다.
+			ctx.strokeStyle = "#ffffff";
+		});
+		
+	}
+</script>
+</head>
+<body>
+	<h2>canvas를 이용한 간단한 그림판</h2>
+	<canvas id="can" width="1000" height="600"></canvas>
+	<div id="clr">
+		<div style="background-color: #ff69b4"></div>
+		<div style="background-color: #001111;"></div>
+		<div style="background-color: #002222;"></div>
+		<div style="background-color: #003333;"></div>
+		<div style="background-color: #004444;"></div>
+		<div style="background-color: #005555;"></div>
+		<div style="background-color: #adff2f;"></div>
+		<div style="background-color: #00cc00;"></div>
+		<div style="background-color: #00dd00;"></div>
+		<div style="background-color: #1e90ff;"></div>
+	</div>
+	<div id="clear">화면 초기화</div>
+	<div id="eraser">지우개</div>
+	
+</body>
+</html>

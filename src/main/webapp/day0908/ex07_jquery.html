@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<script type="text/javascript">
+	//javascript의 window.onload에 해당하는 JQuery코드!
+	$(function(){
+		//alert("load");
+		
+		//모든 b태그의(class 상관 ㄴㄴ) 글꼴 크기를 17pt로 변경해보자!!!!
+		$("b").css("font-size", "17pt");
+		
+		//b태그중 클래스명이 happyㅇ니 태그의 배경색을 orange색으로 변경하라
+		$("b.happy").css("background-color", "orange")
+		
+		//모든 h2태그의 border를 변경하고 글자색을 빨강색으로 변경하라 (두 가지 방법)
+		//#방법1 - css함수를 연달아 써준다.
+		$("h2").css("border", "3px inset pink").css("color", "red");
+		
+		//#방법2 - 중괄호{}로 묶어서 한 번에 써준다.
+		$("h2").css({
+			"border":"5px double blue",
+			"color":"gray"
+		});
+		
+		//모든 이미지의 속성인 src를 변경해보자!! 스타일 변경은 css, 속성변경은 attr을 사용
+		//속성과 style의 width값 수정히기!
+		//$("img").attr("src", "../food/라면.jpg");
+		//$("img").css("width", "200px",);
+		
+		//위의 코드를 한 줄로 줄여보자
+		//$("img").attr("src", "../food/라면.jpg").css("width", "200px");
+		
+		//스타일 여러개를 변경할 경우
+		$("img").attr("src", "../food/라면.jpg").css({
+			"width":"150px",
+			"border":"2px dotted magenta"
+		});
+		
+		//문1) img태그 중 클래스명이 yourimg의 이미지를 변경하고 스타일 변경하기
+		$("img.yourimg").attr("src","../image/f19.png").css({
+			"width":"150px",
+			"border":"1px solid black",
+			"border-radius":"20px",
+			"box-shadow":"2"
+		})
+		
+		//문2) spa태그 중 클래스명이 nice인 태그의 배경색, 글자색, 글자크기 변경하기
+		$("span.nice").css({
+			"background-color":"yellow",
+			"color":"blue",
+			"font-size":"20px"
+		});
+		
+		//믄3) 아이디가 myimg의 이미지와 너비를 변경하고 title을 "안녕하세요"로 변경하기
+		$("img#myimg").css("width", "200px").attr({
+			"src":"../image/f20.png",
+			"title":"안녕하세요"
+			});
+		
+		
+	});
+	
+	
+	
+</script>
+</head>
+<body>
+	<h2>J-Query에서 제일 많이 사용하는 함수 css,attr</h2>
+	<b class="happy">B Tag Class Happy</b>
+	<br>
+	<span class="nice">Span Tag Class Nice</span>
+	<br>
+	<h2 class="happy">H2 Tag Class Happy</h2>
+	<b>나의 최애 이미지들</b>
+	<img src="">
+	<img src="" class="yourimg">
+	<img src="">
+	<img src="" id="myimg" title="">
+	
+	
+</body>
+</html>
