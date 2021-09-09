@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<!-- 
+		input태그로 이름, 자바, HTML, Oracle 점수를 입력 후 성적계산 버튼을 클릭하면
+		값을 읽어서 div태그에 이름, 자바, HTML, Oracle의 점수, 총점, 평균 출력 (모든 이벤트는 j-Query로)
+		
+		조건1 : 이름을 입력하지 않았을 경우 alert으로 경고메세지
+		조건2 : 세 과목의 점수는 숫자가 아닐 경우 alert으로 경고메세지
+		조건3 : div는 jQuery의 css함수를 이용하여 모양을 style로 꾸며준다	
+ 	-->
+ 	
+ 	이름<input type="text" id="name">
+ 	<br><br>
+ 	자바<input type="text" id="java">
+ 	HTML<input type="text" id="html">
+ 	Oracle<input type="text" id="oracle">
+ 	<br><br>
+ 	<button type="button" id="btnresult">성적계산</button>
+ 	<br><br>
+ 	<div></div>
+ 	
+ 	<script type="text/javascript">
+ 	
+ 		$("div").css({
+ 			"width":"400px",
+ 			"height":"200px",
+ 			"border":"2px solid green"
+ 		});
+ 		
+	 	$("input[type='text']").css({
+			"border":"2px solid gray",
+			"width":"100px",
+			"height":"30px",
+			"font-size":"15pt"
+		});
+ 		
+	 	$("#name").keyup(function(){
+			nameResult = $("#name").val();
+		});
+	 	
+	 	$("#java").keyup(function(){
+			if(isNaN($(this).val())){
+				alert("숫자만 입력해주세요")
+				$("#java").val("");
+				return;
+			}
+			
+			javaResult = parseInt($("#java").val());
+		});
+	 	
+	 	$('#html').keyup(function(){
+			if(isNaN($(this).val())){
+				alert("숫자만 입력해주세요")
+				$("#html").val("");
+				return;
+			}
+			htmlResult = parseInt($("#html").val());
+		});
+	 	
+	 	$('#oracle').keyup(function(){
+			if(isNaN($(this).val())){
+				alert("숫자만 입력해주세요")
+				$("#oracle").val("");
+				return;
+			}
+			oracleResult = parseInt($("#oracle").val());
+		});
+	 	
+ 		
+ 		
+	 	$("#btnresult").click(function(){
+	 		
+		 	var nameResult = $("#name").val();
+		 	var javaResult = parseInt($("#java").val());
+		 	var htmlResult = parseInt($("#html").val());
+		 	var oracleResult = parseInt($("#oracle").val());
+	 		var total = (javaResult + htmlResult + oracleResult);
+	 		var avg = (total/3).toFixed(2);
+	 		
+	 		$("div").html("이   름 : " + nameResult + 
+	 					  "<br>자바점수 : " + javaResult + 
+	 					  "<br>HTML점수 : " + htmlResult + 
+	 					  "<br>oracle점수 : " + oracleResult + 
+	 					  "<br>총   점 : " + total + 
+	 					  "<br>평   균 : " + avg);
+	 		
+	 	});
+	 	
+ 	</script>
+ 	
+ 	
+</body>
+</html>

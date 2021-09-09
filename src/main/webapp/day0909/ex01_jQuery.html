@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>J-Query 기본 복습</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+	<body>
+	<div class="a">
+		<div>Happy</div>
+		<div>Hello</div>
+	</div>
+	
+	<div class="b">
+		<div>Java</div>
+		<div>Oracle</div>
+		<h3>b클래스 아래의 h3태그 입니다</h3>
+		<img src="">
+	</div>
+	
+	<div class="c">
+		<b>오늘은 목요일 입니다.</b>
+		<div>제이쿼리 공부하는 날</div>
+		<h3>c클래스 아래의 h3태그입니다.</h3>
+		<div><img src=""></div>
+	</div>
+
+	<script type="text/javascript">
+		
+		//문1) div태그의 a클래스 아래의 div안에 있는 글자색을 파란색으로!
+		$("div.a div").css({
+			"color":"blue",
+			"font-family":"Impact",
+			"font-size":"20px"
+		});
+		
+		//문2) div태그의 b클래스 '바로'아래의 div태그의 width를 300px, border마음대로 변경!
+		$("div.b>div").css({
+			"width":"300px",
+			"border":"2px solid green"
+		});
+		
+		//문3) div태그의 b클래스 아래의 img태그의 src를 변경하고, width 변경
+		$("div.b>img").attr("src", "../car/car_a_08.jpg").css("width", "500px");
+		
+		//문4) div태그의 c클래스 아래의 b태그의 글자색,배경색,글자크기변경
+		$("div.c>b").css({
+			"color":"yellow",
+			"background-color":"black",
+			"font-size":"15px"
+		});
+		
+		//문5) div태그의 c클래스 아래의 img태그의 width를 변경, border 둥글게 만들기
+		$("div.c img").attr("src", "../bts/17.JPG").css({
+			"width":"150px",
+			"border-radius":"30px"
+		});
+		
+		//문6) 모든 h3태그의 배경색,글자색, wihdth, border변경
+		$("h3").css({
+			"width":"300px",
+			"border":"5px solid gray",
+			"color":"yellow",
+			"background-color":"pink",
+		})
+
+	</script>
+
+</body>
+</html>

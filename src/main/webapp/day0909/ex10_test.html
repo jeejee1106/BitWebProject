@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<img src="">
+	<img src="">
+	<img src="">
+	<img src="">
+	<img src="">
+	
+	<script type="text/javascript">
+		//모든 img에 같은 이미지를 넣고 width, height, border 설정
+		$("img").attr("src", "../image2/15.png").css({
+			"width":"100px",
+			"height":"100px",
+			"border":"2px dotted green"
+		});
+		
+		//5개의 또 다른 이미지명을 배열에 넣는다.
+		var imgArr = new Array();
+		
+		imgArr.push('../image2/19.png');
+		imgArr.push('../image2/18.png');
+		imgArr.push('../image2/17.png');
+		imgArr.push('../image2/16.png');
+		imgArr.push('../image2/14.png');
+		
+		//img태그에 마우스를 올리면 5개의 이미지중 한개를 random()으로 구현한 후 src를 변경한다.
+		$("img").mouseover(function(){
+			var r = parseInt(Math.random()*5);
+			imgsrc = $(this).attr("src");
+	
+			$(this).attr("src", imgArr[r]);
+		});
+		
+		//마우스가 벗어나면 다시 원래 이미지로!
+		$("img").mouseout(function(){
+			$(this).attr("src", imgsrc);
+		});
+		
+	</script>
+	
+</body>
+</html>

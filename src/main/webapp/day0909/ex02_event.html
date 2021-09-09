@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<h4>html() : 자바스크립트의 innerHTML에 해당</h4>
+	<h4>text() : 자바스크립트의 innerText애 해당</h4>
+	<h4>append() : 추가</h4>
+	
+	<hr>
+	
+	<h2></h2>
+	<h2></h2>
+	<h2></h2>
+	
+	<script type="text/javascript">
+	
+		//h2태그 중 첫 번째에 html 태그 넣기 - eq(0)
+		
+		//$("h2").eq(0).html("<b>h2태그입니다</b>"); //#방법1
+		//$("h2:eq(0)").html("<b>h2태그입니다</b>"); //#방법2
+		//$("h2:first").html("<b>h2태그입니다</b>"); //#방법3
+		$("h2").first().html("<b>h2태그입니다</b>"); //#방법4
+		
+		//h2태그 중 두 번째에 text로 태그 넣기
+		$("h2:eq(1)").text("<b>두 번째 h2태그입니다</b>");
+		
+		//h2태그 중 마지막 태그에 html태그를 넣고 css추가하기
+		$("h2:last").html("<b>마지막 h2태그입니다</b>").css("color", "red");
+		
+		//append는 기존 값 뒤에 무언가를 추가할 때 쓴다!
+		$("h2:eq(0)").append("<img src='../car/car_a_03.jpg'>");
+		
+		//두 번째 태그 뒤에 이미지를 넣고 너비,높이를 모두 100px로 변경해보자!
+		$("h2:eq(2)").append("<img src='../car/car_a_07.jpg'>");
+		$("h2:eq(2) img").css({
+			"width":"330px",
+			"height":"50px"
+		})
+		
+		//클릭 이벤트!!!!!
+		$("h2:eq(0)").click(function(){
+			alert($(this).text()); //자기자신 안에 있는 태그를 text로 반환!
+		});
+		
+		$("h2:eq(2)").click(function(){
+			alert($(this).html()); //자기자신 안에 있는 태그를 html로 반환!
+		});
+		
+		
+		
+		
+	</script>	
+	
+	
+</body>
+</html>

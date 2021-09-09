@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<div>0</div>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<span></span>
+	
+	<script type="text/javascript">
+		//div의 크기를 일정하게 지정한 후 랜덤하게 색상을 만들어 배경색으로 넣어준다
+		for(var i=0; i<5; i++){
+			r = parseInt(Math.random()*255)+1;
+			g = parseInt(Math.random()*255)+1;
+			b = parseInt(Math.random()*255)+1;
+	
+			color = "rgb(" + r + "," + g + "," + b + ")";
+			
+			$("div").eq(i).css({
+				"width":"100px",
+				"height":"100px",
+				"border":"1px solid black",
+				"float":"left",
+				"margin-right":"5px",
+				"background-color":color
+			});
+		}
+
+		$("span").css({
+			"display":"inline-block",
+			"border":"2px solid gray",
+			"width":"150px",
+			"height":"100px",
+			"font-size":"12pt",
+			"line-height":"100px",
+			"text-align":"center"
+		});
+		
+		//각 div를 클릭할 경우 해당 배경색을 얻어서 span태그에 넣어준다.
+		$("div").click(function(){
+			// result = $(this).html("R : " + r + "G : " + g + "B" + b);
+			result = $(this).css("background-color");
+			$("span").html(result);
+		});
+	
+	</script>
+	
+</body>
+</html>

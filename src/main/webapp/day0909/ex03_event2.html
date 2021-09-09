@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<h3 class="a"></h3>
+	<hr>
+	<h3 class="b">h3의 내용을 이곳에 복사하세요</h3>
+	
+	<script type="text/javascript">
+		
+		$("h3.a").html("예쁜 캐릭터 인형입니다.").append("<img src='../image2/02.png'>");
+		
+		$("h3.a").click(function(){
+			tag=$(this).html();
+			alert("안의 코드가 복사되었습니다.")
+		});
+		
+		$("h3.b").click(function(){
+			$(this).html(tag);
+		});
+		
+		/* $("h3.b").click(function(){
+			$(this).append(tag);
+		});  //누를 때 마다 계속 추가가 됨! */
+		
+		
+	</script>
+
+</body>
+</html>
