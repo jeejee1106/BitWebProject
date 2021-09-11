@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>li style</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<p>오늘 쇼핑할 물건</p>
+	<ol>
+		<li>양말</li>
+		<li>라면</li>
+		<li>우유</li>
+		<li>딸기</li>
+	</ol>
+	
+	<p>오늘 먹고싶은 음식</p>
+	<ol>
+		<li>곱창</li>
+		<li>소주</li>
+		<li>솜사탕</li>
+		<li>마시멜로</li>
+	</ol>
+	
+	<script type="text/javascript">
+		//$("ol li:first").css("background-color", "gray"); //전체에서 첫번째 li에 해당
+		$("ol li:first-child").css("background-color", "gray"); //각 ol항목의 첫번째 li에 해당
+		
+		//전체 항목에서 "라면"을 찾아서 글자 크기를 1.5배로
+		$("li:contains(솜사탕)").css("font-size", "1.5em")
+		
+		//li의 홀수번지를 찾아서 border지정(인덱스 번호가 0,1,2~ 니까 실제로는 li의 2번, 4번~ 에 해당한다.)
+		//odd는 홀수, even은 짝수!
+		$("li:odd").css("border", "2px inset skyblue"); 
+		
+		
+		
+	
+	</script>
+	
+	
+	
+</body>
+</html>

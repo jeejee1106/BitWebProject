@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>formTag</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	div{
+		border: 1px solid black;
+		padding: 20px 20px 20px 20px;
+		width: 500px;
+		margin-bottom: 10px;
+	}
+</style>
+</head>
+<body>
+	<h3>폼태그 연습 #1</h3>
+	<div>
+		<b>아이디</b>
+		<input type="text" style="width: 100px;">
+		<br>
+		<b>비밀번호</b>
+		<input type="password" style="width: 100px;">
+		<br>
+	</div>
+	<script type="text/javascript">
+		//포커스가 갈 경우 배경색을 노란색으로!
+		$("input:text, input:password").focus(function(){
+			$(this).css("background-color", "yellow");
+		});
+		
+		//포커스가 벗어날 경울 다시 흰색으로
+		$("input:text, input:password").blur(function(){
+			$(this).css("background-color", "white");
+		})
+	</script>
+	
+	
+	<h3>폼태그 연습 #2</h3>
+	<div>
+		<input type="checkbox" id="cbk">운전면허
+		&nbsp;&nbsp;
+		<button type="button" id="btn1">확인</button>
+		&nbsp;&nbsp;<span></span>
+	</div>
+	<script type="text/javascript">
+		$("#btn1").click(function(){
+			var a = $("#cbk").val(); //value를 지정하지 않았을 떈 무조건 on이 나온다
+			var b = $("#cbk").is(":checked"); //체크상태에 따라 true/false가 나온다
+			$("span:eq(0)").html(a+","+b);
+		});	
+	</script>
+	
+	
+	<h3>폼태그 연습 #3</h3>
+	<div>
+	<input type="radio" name="gohang" value="강원도">강원도
+	<input type="radio" name="gohang" value="경기도">경기도
+	<input type="radio" name="gohang" value="인천">인천
+	<input type="radio" name="gohang" value="충청남도">충청남도
+	<br>
+	<button type="button" id="btn2">고향 선택값 출력</button>
+	<span></span>	
+	</div>
+	<script type="text/javascript">
+		
+		$("#btn2").click(function(){
+			var data=$("input[name='gohang']:checked").val();
+			$("span:eq(1)").html(data);
+		});
+		
+	</script>
+	
+	<h3>폼태그 연습 #4</h3>
+	<div>
+		<h3>구현 가능한 컴퓨터 언어는?</h3>
+		<input type="checkbox" name="computer" value="Java">Java
+		<input type="checkbox" name="computer" value="j-Query">j-Query
+		<input type="checkbox" name="computer" value="Spring">Spring
+		<input type="checkbox" name="computer" value="JavaScript">JavaScript
+		<br>
+		<button type="button" id="btn3">가능한 언어 출력</button>	
+		<span></span>
+	</div>
+	<script type="text/javascript">
+		$("#btn3").click(function(){
+			//체크된 언어의 갯수
+			var len = $("input[name='computer']:checked").length;
+			var s = "체크갯수 : " + len;
+			if(len==0){
+				s+="<br>가능한 언어 없음";
+			}else{
+				$("input[name='computer']:checked").each(function(i, element){
+					s+=$(this).val()+"&nbsp;";
+				});
+			}
+			$("span:eq(2)").html(s);
+		});
+	</script>
+	
+	
+	<h3>폼태그 연습 #5</h3>
+	<div>
+		<select id="selone">
+			<option value="red">빨강</option>
+			<option value="blue">파랑</option>
+			<option value="green">초록</option>
+			<option value="gray">회색</option>
+		</select>
+		<br>
+		<button type="button" id="btn4">색상 가져오기</button>
+		<br>
+		<span></span>
+	</div>
+	<script type="text/javascript">
+		$("#btn4").click(function(){
+			var col = $("#selone").val();
+			var col2 = $("#selone option:selected").text();
+			
+			//$("span:eq(3)").html(col).css("color", col);
+			$("span:eq(3)").html(col2).css("color", col);
+			
+		});
+		
+		
+	</script>
+	
+</body>
+</html>
