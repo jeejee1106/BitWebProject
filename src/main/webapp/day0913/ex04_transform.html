@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>transform</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<img src="../image2/01.png">
+	<img src="../image2/02.png">
+	<img src="../image2/03.png">
+	<img src="../image2/04.png">
+	
+	<script type="text/javascript">
+		$("img:eq(0)").hover(function(){
+			$(this).css("transform", "rotate(45deg)"); //시계 방향으로 45도 회전
+		}, function(){
+			$(this).css("transform", "rotate(0deg)"); //시계 방향으로 45도 회전
+		});
+		
+		$("img:eq(1)").hover(function(){
+			$(this).css("transform", "rotate(-45deg)");
+		}, function(){
+			$(this).css("transform", "rotate(0deg)");
+		});
+		
+		$("img:eq(2)").hover(function(){
+			$(this).css("transform", "scale(0.5, 2.0)"); //가로는 0.5배, 세로는 2배!
+		}, function(){
+			$(this).css("transform", "scale(1, 1)"); //다시 원래 크기로(기본 값이 1)
+		});
+		
+		$("img:eq(3)").hover(function(){
+			$(this).css("transform", "translate(50px, 70px)"); //가로50px만큼, 세로 70px 만큼 이동시키겠다. 
+		}, function(){
+			$(this).css("transform", "translate(0px, 0px)"); //다시 제자리로(기본 값이 0)
+		});
+		
+	</script>
+</body>
+</html>

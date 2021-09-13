@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0913 formTag연습1</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<style type="text/css">
+	body * {
+	   font-family: 'Gaegu';
+	   font-size: 13px;
+	}
+	
+	table {
+	   width: 400px;
+	   border-collapse: collapse;
+	}
+	
+	th, td {
+	   border: 1px solid gray;
+	}
+	
+	th{
+	width: 100px;
+	background-color: #ffc;
+	}
+	
+	#result{
+		border: 2px groove gray;
+		width: 400px;
+		height: 300px;
+		margin-top: 30px;
+		padding: 10px 10px;
+		font-size: 13pt;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		//핸드폰 가운데 번호에 4자리가 들어오면 포커스가 뒷자리로 가게!!
+		$("#hp2").keyup(function(){
+			var hp2 = $(this).val();
+			if(hp2.length==4){
+				$("#hp3").focus();
+			}
+		});
+		
+		//버튼이벤트
+		$("#btn").click(function(){
+			
+			var name = $("#name").val();
+			
+			var hp1 = $("#hp1").val();
+			var hp2 = $("#hp2").val();
+			var hp3 = $("#hp3").val();
+			
+			var col = $("input[name='fcolor']:checked").val();
+			
+			var gender = $("input[name='gender']:checked").val();
+			
+			var s = "";
+			$("input[name='license']:checked").each(function(i, element){
+				s+="[" + $(this).val() + "]";
+			});
+			//lic+=(license==""?"없음":license);
+			
+			$("#result").html("이름 : " + name + "<br>" + 
+							  "핸드폰 : " + hp1 + "-" + hp2 + "-" + hp3 + "<br>" + 
+							  "글자색 : " + col + "<br>" + 
+							  "성별 : " + gender + "<br>" + 
+							  "자격증 : " + s).css("color",col);
+			
+			
+		});
+		
+		
+	});
+
+</script>
+</head>
+<body>
+   <h3>폼 태그 연습 #1</h3>
+   <table>
+      <caption>
+         <b>개인정보</b>
+      </caption>
+      <tr>
+      	<th>이름</th>
+	      <td>
+	      <input type="text" id="name" size="7">
+	      </td>
+      </tr>
+		<tr>
+	      <th>핸드폰</th>
+		<td>
+		      <select id="hp1">
+			      <option>010</option>
+			      <option>011</option>
+			      <option>019</option>
+			      <option>02</option>
+			      <option>031</option>
+		      </select>
+		      <b>-</b>
+		      <input type="text" id="hp2" maxlength="4" size="4">
+		      <b>-</b>
+		      <input type="text" id="hp3" maxlength="4" size="4">
+	      </td>
+		</tr>
+		<tr>
+			<th>글자색</th>
+			<td>
+				<input type="radio" name="fcolor" value="blue">파랑색
+				<input type="radio" name="fcolor" value="magenta">분홍색
+				<input type="radio" name="fcolor" value="black">검정색
+				<input type="radio" name="fcolor" value="red">빨강색
+			</td>
+		</tr>
+		<tr>
+			<th>성별</th>
+			<td>
+				<input type="radio" name="gender" value="남자">남자
+				<input type="radio" name="gender" value="여자" checked="checked">여자
+			</td>
+		</tr>
+		<tr>
+			<th>자격증</th>
+			<td>
+				<input type="checkbox" name="license" value="운전면허">운전면허
+				<input type="checkbox" name="license" value="정보처리기사">정보처리기사
+				<input type="checkbox" name="license" value="컴퓨터활용1급">컴퓨터활용1급
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button type="button" id="btn">개인정보 출력</button>
+			</td>
+		</tr>
+   </table>
+   <div id="result"></div>
+</body>
+</html>

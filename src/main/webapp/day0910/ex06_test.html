@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0910 formTag test</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<style type="text/css">
+	
+	#result{
+		font-family: 'Dokdo';
+		font-size: 2em;
+		margin-top: 30px;
+	}
+	
+	table{
+		border-collapse: collapse;
+	}
+	
+	th, td{
+		border: 1px solid black;
+	}
+	
+	#btn{
+		margin-left: 50px;
+		background-color: orange;
+		color: blue;
+		font-size: 1.2em;
+	}
+</style>
+</head>
+<body>
+	<h3>폼 태그 복습 문제 #1</h3>
+	<div>
+		<h5>글자색</h5>
+		<input type="radio" name="fcolor" value="#000000"  checked="checked">검정
+		<input type="radio" name="fcolor" value="#b0c4de">소라
+		<input type="radio" name="fcolor" value="#7cfc00">라임
+		<input type="radio" name="fcolor" value="#9932cc">보라
+		
+		<h5>글꼴선택</h5>
+		<select id="selfont">
+			<option>Dokdo</option>
+			<option>Gaegu</option>
+			<option>Gugi</option>
+			<option>Nanum Pen Script</option>
+		</select>
+		
+		<h5>글꼴 스타일</h5>
+		<table style="width: 400px">
+			<tr>
+				<td>기울기</td>
+				<td>굵게</td>
+				<td>밑줄</td>
+				<td>취소선</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="checkbox" id="chk1">
+				</td>
+				<td>
+					<input type="checkbox" id="chk2">
+				</td>
+				<td>
+					<input type="checkbox" id="chk3">
+				</td>
+				<td>
+					<input type="checkbox" id="chk4">
+				</td>
+			</tr>
+		</table>
+		
+		<h5>체크된 이미지 모두 출력</h5>
+		<input type="checkbox" name="doll" value="01">인형1
+		<input type="checkbox" name="doll" value="02">인형2
+		<input type="checkbox" name="doll" value="03">인형3
+		<input type="checkbox" name="doll" value="04">인형4
+		<br><br>
+		<button type="button" id="btn">선택 값 적용</button>
+	</div>
+	<div id="result">
+		여러분 금요일 입니다~!~!얄루~!
+		<div class="mydoll"></div>
+	</div>
+	
+	<script type="text/javascript">
+	
+		$("#btn").click(function(){
+			
+			//글자색 적용
+			var col = $("input[name='fcolor']:checked").val();
+			//console.log(col);
+			$("#result").css("color", col);
+		
+			//글꼴 적용
+			//var fontfam = $("#selfont").val(); //앗 value값이 없는데 가져와지긴 하다,...!
+			var fontfam = $("#selfont option:selected").text(); //value값이 가져와줘도 이왕이면 정확한 값이 있는 text로 써주는 게 좋을 것 같다.
+			console.log(fontfam);
+			$("#result").css("font-family", fontfam);
+			
+			//글꼴 스타일 적용
+			var chk1 = $("input:checkbox[id='chk1']").is(":checked");
+			var chk2 = $("input:checkbox[id='chk2']").is(":checked");
+			var chk3 = $("input:checkbox[id='chk3']").is(":checked");
+			var chk4 = $("input:checkbox[id='chk4']").is(":checked");
+			
+			if(chk1){
+				$("#result").css("font-style", "italic");
+			} else{
+				$("#result").css("font-style", "normal");
+			}
+			
+			if(chk2){
+				$("#result").css("font-weight", "bold");
+			} else{
+				$("#result").css("font-weight", "normal");
+			}
+			
+			if(chk3){
+				$("#result").css("text-decoration", "underline");
+			} else{
+				$("#result").css("text-decoration", "none");
+			}
+			
+			
+			if(chk4){
+				$("#result").css("text-decoration", "line-through");
+			} else{
+				$("#result").css("text-decoration", "normal");
+			}
+			
+			if(chk3 && chk4){
+				$("#result").css("text-decoration", "underline line-through");
+			}
+			
+			//이미지 출력
+			var s = "";
+			$("input[name='doll']:checked").each(function(i, element){
+				s+= "<img src='../image2/" + $(this).val() + ".png'>";
+			});
+ 			
+ 			$("div.mydoll").html(s);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>siblings</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<div class="one">
+		첫 번째 div
+		<div class="hana">div 하나</div>
+		<div>둘</div>
+		<div>셋</div>
+		<h3>h3 Tag</h3>
+		<h4>h4 Tag</h4>
+	</div>
+	<div class="two">
+		두 번째 div
+		<div class="hana">div 하나</div>
+		<div>둘</div>
+		<div>셋</div>
+		<h3>h3 Tag</h3>
+		<h4>h4 Tag</h4>
+	</div>
+	<script type="text/javascript">
+		
+		//parent() : 부모태그, siblings() : 형제태그, children() : 자식태그
+		
+		$("div.one div.hana").siblings().css("color", "red");
+		$("div").children("div.hana").css("text-decoration", "underline");
+		$("div.hana").next().next().css("background-color", "orange");
+		$("div.two").find("h3").css("border", "2px solid blue");
+		
+		$("div.one").click(function(){
+			$(this).find("div").show();
+			$(this).siblings().find("div").hide(); //나의 형제 태그중 div를 찾아서 숨겨라
+		});
+		
+		$("div.two").click(function(){
+			$(this).find("div").show();
+			$(this).siblings().find("div").hide('slow'); //나의 형제 태그중 div를 찾아서 천천히 숨겨라
+			
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+</body>
+</html>
