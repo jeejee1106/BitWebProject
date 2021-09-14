@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	div.movie{
+		border: 1px solid black;
+		width: 350px;
+		height: 200px;
+		float: left;
+		margin-right: 50px;
+		margin-bottom: 50px;
+	}
+	
+	div.result{
+		border: 1px solid black;
+		width: 400px;
+		height: 200px;
+		margin-left: 300px;
+		clear: both;
+	}
+	
+	ul li{
+		cursor: pointer;
+		list-style: none;
+	}
+	
+	ul li:hover{
+		color: orange;
+	}
+	
+</style>
+</head>
+<body>
+	<div class="movie">
+		<button id="btn1">영화예매</button>
+	</div>
+	<div class="movie">
+		<button id="btn2">극장선택</button>
+		<button id="btn3">영화선택</button>
+	</div>
+	<div class="movie" id="select">
+		<ul id="shop">
+			<li>CGV 강남</li>
+			<li>MEGA BOX 강남</li>
+			<li>Lotte Cinema 강남</li>
+		</ul>
+		<ul id="menu">
+			<li>암살</li>
+			<li>엑시트</li>
+			<li>바람과 함께 사라지다</li>
+		</ul>
+	</div>
+	<div class="result">
+		예매내역
+	</div>
+	
+	<script type="text/javascript">
+		$("#btn2, #btn3").hide();
+		$("#shop, #menu").hide();
+	
+		$("#btn1").on("click", function(){
+			$("#btn2, #btn3").show();
+		});
+		
+		$(document).on("click", "#btn2", function(){
+			$("#shop").show();
+			$("#menu").hide();
+			//$("#shop").siblings().find("#menu").hide();
+		});
+		
+		$(document).on("click", "#btn3", function(){
+			$("#menu").show();
+			$("#shop").hide();
+			//$("#menu").siblings().find("#shop").hide();
+		});
+		
+		$(document).on("click", "#shop>li", function(){
+			$(".result").html("영화관 : " + $(this).text() + "<br>");
+		});
+		
+		$(document).on("click", "#menu>li", function(){
+			$(".result").append("영화 제목 : " + $(this).text());
+		});
+	
+	
+	</script>
+</body>
+</html>

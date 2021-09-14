@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>animate1</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	#one{
+		position: relative;
+		width: 50px;
+		height: 50px;
+		background-color: pink;
+		border: 1px solid magenta;
+	}
+</style>
+</head>
+<body>
+	<img alt="" src="../image2/03.png" id="img1" width="100">
+	<hr>
+	<div id="one"></div>
+	
+	<script type="text/javascript">
+		$("#img1").animate({width:'200px', opacity:'0.5'}, 'slow'); //slow자리에는 이 외에도 fast, 2000(2초를 뜻함) 이런식으로 애니메이션의 속도를 조절 할 수 있다.
+		$("#img1").animate({width:'100px', opacity:'1'}, 'slow', 'linear', function(){ //이미지가 위 코드로 인해 커졌으니 다시 작아지게!
+			//애니메이션이 끝난 후 처리할 일들
+			//alert("끝났어요!!");
+			$(this).after("<b>The End!!</b>");
+		}); 
+		
+		//애니메이션은 계속 이어서 쓸 수 있다.
+		$("#one").animate({"left":"+=60"}, 2000).animate({"borderWidth":"10px"},2000).animate({"width":"120px"},2000).animate({"height":"120px"},2000);
+	</script>
+</body>
+</html>

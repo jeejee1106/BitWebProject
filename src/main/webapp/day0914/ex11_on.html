@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>on이벤트 연습</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	.a{
+		position: absolute;
+		left: 200px;
+		top: 100px;
+	}
+	
+	.b{
+		position: absolute;
+		left: 200px;
+		top: 300px;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		//처음 로딩 시 존재했던 버튼들은 click 이벤트나 on이벤트 모두 가능하다
+		$("body").append("<button type='button' id='btn2'>버튼2</button>");
+		
+		//click을 이용한 이벤트
+		/* $("#btn1").click(function(){
+			$("div.a").html("<button type='button' id='btn3'>버튼3</button>");
+		}); */
+		
+		//위의 코드를 on함수를 이용해서 구현해보자
+		$("#btn1").on("click", function(){
+			$("div.a").html("<button type='button' id='btn3'>버튼3</button>");
+		});
+		
+		$("#btn2").on("click", function(){
+			$("div.b").html("<button type='button' id='btn4'>버튼4</button>");
+		});
+		
+		//동적으로 나중에 생성된 버튼에 대한 이벤트는 이런식으로 줘야 제대로 이벤트가 발생한다!!
+		//형식 : &(document).on("이벤트", "selector", 콜백함수) //document대신 "body"도 가능
+		$(document).on("click", "#btn3", function(){
+			$("div.a").append("<img src='../image2/13.png' width='100px'>");
+		});
+		
+		$(document).on("click", "#btn4", function(){
+			$("div.b").append("<img src='../image2/14.png' width='100px'>");
+		});
+		
+	});
+	
+	
+
+</script>
+</head>
+<body>
+	<button type="button" id="btn1">버튼1</button>
+	<div class="a">A</div>
+	<div class="b">B</div>
+	
+</body>
+</html>
