@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>총탕탕, CD변경</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	/*gun.png의 사이즈 300x500*/
+	#gun{
+		width: 300px;
+		height: 250px;
+		background-image: url('../jimage/gun.png');
+	}
+	
+	#gun:active {
+		background-position: right bottom;
+	}
+	
+	div.cover{
+		position: absolute;
+		left: 100px;
+		top: 350px;
+		background-image: url("../jimage/cover.png");
+		background-size: 350px 300px;
+		width: 350px;
+		height: 300px;
+		z-index: 2;
+	}
+	
+	div.cd{
+		position: absolute;
+		background-image: url("../jimage/cd-sprite.png");
+		background-size: 300px 840px;
+		left:280px;
+		top: 365px;
+		width: 300px;
+		height: 280px;
+		background-position: left top;
+		z-index: 1;
+	}
+	
+	div.buttons{
+		position: absolute;
+		left: 200px;
+		top: 700px;
+	}
+	
+	div.buttons button{
+		width: 100px;
+		height: 100px;
+		border-radius: 100px;
+		margin-right: 20px;
+		background-color: #87ceeb;
+		color: #fff;
+		font-size: 2em;
+		font-family: 'Gugi';
+		cursor: pointer;
+	}
+	
+	div.buttons button:hover{
+		box-shadow: 5px 5px 5px gray;
+	}
+	
+</style>
+<script type="text/javascript">
+	$(function(){
+		/*
+			요구사항
+			 #1: 버튼을 클릭하면 해당 시디로 교체한다
+			 #2: 만약 1번 cd가 들어있는데 1번 버튼을 클릭하면 "현재 CD입니다"경고
+			 #3: 교체시 animate적용
+		*/
+		
+		$("#btn1").click(function(){
+			var pos = $("div.cd").css("background-position");
+			if(pos=="0% 0%"){
+				alert("현재 1번 CD입니다.");
+			} else{
+				//그냥 바뀜
+				//$("div.cd").css("background-position", "left top");
+				
+				//애니메이션 적용으로 바뀌게 하려면
+				$("div.cd").animate({"left":"110px"}, 500, function(){
+					$("div.cd").css("background-position", "left top");
+					$(this).animate({"left":"280px"}, 500);
+				});
+			}
+		});
+	
+		$("#btn2").click(function(){
+			var pos = $("div.cd").css("background-position");
+			if(pos=="0% 50%"){
+				alert("현재 2번 CD입니다.");
+			} else{
+				//$("div.cd").css("background-position", "left center");
+				$("div.cd").animate({"left":"110px"}, 500, function(){
+					$("div.cd").css("background-position", "left center");
+					$(this).animate({"left":"280px"}, 500);
+				});
+			}
+		});
+		
+		$("#btn3").click(function(){
+			var pos = $("div.cd").css("background-position");
+			if(pos=="0% 100%"){
+				alert("현재 3번 CD입니다.");
+			} else{
+				//$("div.cd").css("background-position", "left bottom");
+				$("div.cd").animate({"left":"110px"}, 500, function(){
+					$("div.cd").css("background-position", "left bottom");
+					$(this).animate({"left":"280px"}, 500);
+				});
+			}
+		});
+	});
+
+</script>
+</head>
+<body>
+	<div id="gun"></div>
+	<hr>
+	<div class="cover"></div>
+	<div class="cd"></div>
+	<div class="buttons">
+		<button type="button" id="btn1">CD1</button>
+		<button type="button" id="btn2">CD2</button>
+		<button type="button" id="btn3">CD3</button>
+	</div>
+</body>
+</html>

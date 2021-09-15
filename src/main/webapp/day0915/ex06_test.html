@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>미니언 숨기기</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	div.wall{
+		position: absolute;
+		width: 200px;
+		height: 400px;
+		background-image: url('../jimage/bg2.png');
+		z-index: 2;
+	}
+	
+	#doll{
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		left: 100px;
+		top: 150px;
+		z-index: 1;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$("#doll").click(function(){
+			$(this).animate({"width":"0px"}).animate({"width":"200px"});
+		});
+		
+		/* //3초에 한 번씩 실행!
+		setInterval(function(){
+			$("#img").
+		}); */
+	});
+	
+</script>
+</head>
+<body>
+	<div class="wall"></div>
+	<img alt="" src="../jimage/03.png" id="doll">
+</body>
+</html>

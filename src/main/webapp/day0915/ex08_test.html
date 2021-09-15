@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	
+</style>
+<script type="text/javascript">
+	$(function(){
+		$("div.bigCar").hide();
+		
+		var s = "";
+		for(var i=1; i<=8; i++){
+			s+="<img src='../car/car_a_0" + i + ".jpg'><br>";
+		}
+		$("div.smallCar").html(s);
+		
+		var b = "";
+		for(var i=1; i<=8; i++){
+			b+="<img src='../car/car_b_0" + i + ".jpg'><br>";
+		}
+		$("div.bigCar").html(b);
+		
+		$("div.smallCar").mouseover(function(){
+			$("div.bigCar").show().fadeIn(500);
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/* $("div.smallCar>img").mouseout(function(){
+			//console.log($("div.smallCar>img").eq(0).attr("src"));
+			//console.log($("div.bigCar>img").eq(0).attr("src"));
+			$("div.bigCar>img").fadeOut(500);
+		}); */
+		
+		/* for(var i=0; i<=7; i++){
+			$("div.smallCar>img").eq(i).mouseover(function(){
+				$("div.bigCar>img").eq(i).fadeIn(500);
+			});
+		} */
+		
+		/* $("div.smallCar>img").eq(0).mouseover(function(){
+			//console.log($("div.smallCar>img").eq(0).attr("src"));
+			//console.log($("div.bigCar>img").eq(0).attr("src"));
+			$("div.bigCar>img").eq(0).show();
+		}); */
+		
+		
+		
+	});
+	
+	
+	
+</script>
+
+</head>
+<body>
+	<div class="smallCar"></div>
+	<div class="bigCar">
+		
+	</div>
+</body>
+</html>
