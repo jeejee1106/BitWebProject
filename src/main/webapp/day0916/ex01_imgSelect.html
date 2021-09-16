@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연예인 이미지 선택</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	table{
+		border-collapse: collapse;
+	}
+	
+	td{
+		border: 1px solid black;
+	}
+	
+	.small img{
+		width: 80px;
+		height: 100px;
+		margin-top: 20px;
+	}
+	
+	.large{
+		width: 280px;
+		height: 330px;
+	}
+	
+	p{
+		font-weight: bold;
+		font-family: 'Gugi';
+	}
+	
+	.select{
+		background-color: orange;
+		color: blue;
+		font-size: 1.2em;
+	}
+	
+</style>
+<script type="text/javascript">
+	$(function(){
+		//a태그에 있는 이미지를 클릭하면 새로운 이미지 창이 열리도록 이벤트설정이 기본으로 되어있다.
+		//이 이벤트를 없애보자~!
+		$("a.small").click(function(e){ //변수는 내 맘대로
+			//기본이벤트를 무효화 하는 메서드
+			e.preventDefault();
+			
+			//td에 select클래스 추가
+			//이전에 다른 td에 추가되었던 select는 제거
+			$(this).parent().addClass("select");
+			$(this).parent().parent().siblings().find("td").removeClass("select");
+			
+			var simg = $(this).attr("href");
+			//console.log(simg);
+			$(".large").fadeTo("slow", 0, function(){
+				$(this).attr("src", simg);
+			}).fadeTo("slow", 1);
+		});
+	});
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td width="150" align="center">
+				<a href="../bts/10.JPG" class="small">
+					<img alt="" src="../bts/10.JPG">
+				</a>
+				<p>아이유</p>
+			</td>
+			<td rowspan="4" width="350" align="center">
+					<img alt="" src="../bts/10.JPG" class="large">
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center">
+				<a href="../bts/13.JPG" class="small">
+					<img alt="" src="../bts/13.JPG">
+				</a>
+				<p>박보영</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center">
+				<a href="../bts/27.JPG" class="small">
+					<img alt="" src="../bts/27.JPG">
+				</a>
+				<p>하지원</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center">
+				<a href="../bts/26.JPG" class="small">
+					<img alt="" src="../bts/26.JPG">
+				</a>
+				<p>산토리니</p>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
