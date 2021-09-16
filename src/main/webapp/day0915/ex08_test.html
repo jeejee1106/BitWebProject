@@ -2,44 +2,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자동차 이미지 변경하기</title>
 <link
    href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
    rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <style type="text/css">
+	div.bigCar{
+		position: absolute;
+		left: 300px;
+		top: 80px
+	}
 	
+	div.smallCar{
+		cursor: pointer;
+	}
 </style>
 <script type="text/javascript">
 	$(function(){
-		$("div.bigCar").hide();
 		
 		var s = "";
 		for(var i=1; i<=8; i++){
-			s+="<img src='../car/car_a_0" + i + ".jpg'><br>";
+			var iname = "../car/car_a_0" + i + ".jpg";
+			s+="<img src='" + iname + "' class='a'><br>";
 		}
 		$("div.smallCar").html(s);
 		
-		var b = "";
+		
+		$("div.bigCar").html("<img src='../car/car_b_01.jpg' class='b'>")
+		/* var b = "";
 		for(var i=1; i<=8; i++){
+			
 			b+="<img src='../car/car_b_0" + i + ".jpg'><br>";
 		}
-		$("div.bigCar").html(b);
+		$("div.bigCar").html(b); */
 		
-		$("div.smallCar").mouseover(function(){
-			$("div.bigCar").show().fadeIn(500);
+		//이벤트 넣기
+		$("img.a").mouseover(function(){
+			var smallimg = $(this).attr("src");
+			var bigimg = smallimg.replace("_a_", "_b_");
+			
+			$("img.b").fadeOut("fast");
+			$("img.b").attr("src", bigimg);
+			$("img.b").fadeIn("fast");
 		});
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		/* $("div.smallCar>img").mouseout(function(){
 			//console.log($("div.smallCar>img").eq(0).attr("src"));
 			//console.log($("div.bigCar>img").eq(0).attr("src"));
@@ -69,8 +77,6 @@
 </head>
 <body>
 	<div class="smallCar"></div>
-	<div class="bigCar">
-		
-	</div>
+	<div class="bigCar"></div>
 </body>
 </html>
