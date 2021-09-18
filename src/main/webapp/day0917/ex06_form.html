@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+	<h3>폼 태그 #1</h3>
+	<!-- action : 폼 안에 있는 모든 폼태그들을 ex06_action.jsp(파일 경로)여기로 보내겠다. 근데 보냈다고 바로 저 파일에 데이터가 뜨는게 아니라 읽어줘야하는 코드를 써줘야한다. -->
+	<form action="ex06_action.jsp" method="get"> <!-- 액션에는 jsp, 서블릿, 스프링 등등을 담을 수 있따?? // method는 여러 방식이 있는데, get방식은 입력값이 주소창에 다 나옴. 기본이 get-->
+																						<!-- post방식은 입력값 안나오는 대신 소스파일에 한글이 깨진다? --> 
+		<table class="table table-bordered" style="width: 300px">
+			<tr>
+				<th width="100" bgcolor="orange">이름</th>
+				<td>
+					<input type="text" name="name" class="form-control" required="required">
+				</td>
+			</tr>
+			<tr>
+				<th width="100" bgcolor="orange">비밀번호</th>
+				<td>
+					<input type="password" name="pass" class="form-control" required="required" pattern="[0-9]{1,4}"> <!-- 0~9숫자만 가능, 길이는 1~4 -->
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit" class="btn btn-info">서버로 전송</button> <!-- 타입이 서브밋일 경우에만 input의 required가 작동한다. -->
+				</td>
+			</tr>
+		</table>
+	</form> 
+</body>
+</html>
