@@ -1,3 +1,7 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="team.TeamDTO"%>
+<%@page import="team.TeamDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,8 +14,53 @@
    rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	table{
+		font-family: 'Gugi';
+	}
+</style>
 </head>
 <body>
-<h1>전체 목록인데 다음주에...</h1>
+	<%
+		//db목록 가져오기
+		TeamDAO dao = new TeamDAO();
+		ArrayList<TeamDTO> list = dao.getAllDatas();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	%>
+
+	<button type="button" class="btn btn-info" style="width: 100px; margin-left: 200px;" onclick="location.href='addform.html'">
+		팀원추가
+	</button>
+	<br>
+	<table class="table table-border" style="width:800px;">
+		<caption><b>팀원 정보 수정</b></caption>
+		<tr bgcolor="orange">
+			<th width="50">번호</th>
+			<th width="100">이름</th>
+			<th width="120">운전면허</th>
+			<th width="150">주소</th>
+			<th width="150">작성일</th>
+			<th width="70">삭제</th>
+		</tr>
+		<%
+			for(int i = 0; i<list.size(); i++){
+				TeamDTO dto = list.get(i); //i번지의 dto를 꺼낸다.
+		%>		
+				<tr>
+					<td align="center"><%=i+1 %></td>
+					<td><%=dto.getName() %></td>
+					<td align="center"><%=dto.getDriver() %></td>
+					<td><%=dto.getAddr() %></td>
+					<td align="center"><%=sdf.format(dto.getWriteday()) %></td>
+					<td align="center">
+						<button type="button" class="btn btn-danger btn-xs" onclick="location.href='teamdelete.jsp?num=<%=dto.getNum()%>'">
+							Delete
+						</button>
+					</td>
+				</tr>
+			<% 
+			}%>
+	
+	</table>
 </body>
 </html>
