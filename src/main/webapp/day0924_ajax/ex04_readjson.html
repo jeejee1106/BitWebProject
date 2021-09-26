@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery를 이용한 Json파일 읽기2</title>
+<link
+   href="https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Gugi&family=Nanum+Pen+Script&display=swap"
+   rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style type="text/css">
+	#show{
+		font-family: 'Dokdo';
+		font-size: 1.3em;
+		margin-top: 30px;
+	}
+</style>
+</head>
+<body>
+	<h2>jQuery의 getJson함수를 이용해서 json 데이터를 읽어보자</h2>
+	<h2>문제 : infoToJson.jsp 파일의 데이터를 출력해보자</h2>
+	<button type="button" class="btn btn-lg btn-success" id="btn1">Json데이터 읽기</button>
+	<div id="show"></div>
+	
+	<script type="text/javascript">
+		$("#btn1").click(function(){
+			$.getJSON("infoToJson.jsp", function(data) {
+				var s = "";
+				$.each(data, function(i, item){
+					//인자로 넘어온 data는 배열타입
+					s+= "<div class='alert alert-warning' style='width:300px;'>";
+					s+= "번호:" + item.num + "<br>";
+					s+= "이름:" + item.name + "<br>";
+					s+= "핸드폰:" + item.hp + "<br>";
+					s+= "나이:" + item.age + "<br>";
+					s+= "<img src='" + item.photo + "' width='100'>";
+					s+="</div><br>";
+					});
+					$("#show").html(s);
+			});
+		});
+	</script>
+</body>
+</html>
